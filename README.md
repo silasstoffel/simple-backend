@@ -36,6 +36,10 @@ Roda o comando em modo de produção
 
 Após rodar o comando os fontes compilados ficarão no diretório **bin**
 
+**Importante**
+
+Se estiver usando windows, você pode facilitar o processo de build acessando diretamente os utilitários **build.dev.bat** e **build.prod.bat**
+
 ### API
 
 - **Criar usuário**
