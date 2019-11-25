@@ -135,3 +135,14 @@ Retorno de Sucesso (200)
   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzQ2MjEwNTUsImV4cCI6MTU3NDY0OTg1NSwiaWQiOjF9.MXI2EUtksjETiBPTegB-C4_jFCcGpgttxxwv5Dwzjhs"
 }
 ```
+
+### API - Erros
+
+Em caso de acontecer algum erro nas requisições, o http status retornado será 400 a 499, quando esse status for reportado o retorno virá neste layout.
+
+```json
+{
+  "error": true,
+  "message": "Usuário existente"
+}
+```
