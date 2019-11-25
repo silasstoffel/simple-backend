@@ -22,6 +22,8 @@ Duplicar os arquivos (\*.exemple) abaixo e renomear para extensão `.php`
 
 `./src/config/config_php.php.example` para `./src/config/config_php.php`
 
+Criar o banco de dados com script **database.sql**
+
 ### Builds
 
 Rodar o comando quando for em modo de desenvolvimento
