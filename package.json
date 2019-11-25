@@ -1,0 +1,18 @@
+{
+  "name": "spi-backend-mobile",
+  "version": "1.0.0",
+  "main": "build.js",
+  "repository": "https://silasstofel@bitbucket.org/HT-TEC/backend-spi-mobile.git",
+  "author": "Silas Stoffel <contato@tagtec.com.br>",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "node-watch": "^0.6.3"
+  },
+  "scripts": {
+    "dev": "node build.js --dev",
+    "prod": "node build.js --prod"
+  }
+}

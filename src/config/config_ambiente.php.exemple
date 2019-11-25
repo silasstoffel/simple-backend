@@ -1,0 +1,32 @@
+<?php
+
+global $_config;
+
+$root_dir = str_replace('\\', '/', dirname(dirname(__FILE__)));
+
+// Mudar SOMENTE daqui para baixo
+/**
+ * Ambiente que instalação irá rodar.
+ * Valores aceitos: producao | desenvolvimento
+ */
+$_config['ambiente'] = 'desenvolvimento';
+
+$_config['producao'] = [
+    'tmp_dir' => $root_dir . '/tmp',
+    'log_dir' => $root_dir . '/logs',
+    // Preencher apenas quando sua instalação for em subdiretorio do DocumentRoot, caso não seja largar vazio ''
+    'prefix_url' => '/api',
+    'debug' => false,
+];
+
+$_config['desenvolvimento'] = [
+    'tmp_dir' => $root_dir . '/tmp',
+    'log_dir' => $root_dir . '/logs',
+    // Preencher apenas quando sua instalação for em subdiretorio do DocumentRoot, caso não seja largar vazio ''
+    'prefix_url' => '',
+    'debug' => false,
+];
+
+
+// Não alterar
+$_config['root_dir'] = $root_dir;
