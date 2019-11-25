@@ -118,6 +118,8 @@ Retorno de Sucesso (200)
 
 - **Login (Criar token de acesso)**
 
+`POST /session`
+
 Parametros:
 
 ```json
