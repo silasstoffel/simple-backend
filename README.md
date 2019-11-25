@@ -18,9 +18,9 @@ Duplicar os arquivos (\*.exemple) abaixo e renomear para extensão `.php`
 
 `./src/config/config_ambiente.php.exemple` para `./src/config/config_ambiente.php`
 
-`./src/config/config_db.php.exemple` para `./src/config/config_db.php.exemple`
+`./src/config/config_db.php.exemple` para `./src/config/config_db.php`
 
-`./src/config/config_php.php.example` para `./src/config/config_php.php.example`
+`./src/config/config_php.php.example` para `./src/config/config_php.php`
 
 ### Builds
 
