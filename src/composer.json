@@ -1,8 +1,13 @@
 {
     "require": {
         "slim/slim": "3.12",
-        "tuupola/slim-jwt-auth": "^2.4"
+        "tuupola/slim-jwt-auth": "^2.4",
+        "vlucas/phpdotenv": "^4.1"
     },
     "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/module-rest": "^1.0.0"
     }
 }

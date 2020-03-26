@@ -57,3 +57,5 @@ Thumbs.db
 config_ambiente.php
 config_db.php
 config_php.php
+/src/.env
+/src/tests/_output
