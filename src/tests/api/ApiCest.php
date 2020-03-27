@@ -4,18 +4,19 @@ class ApiCest
 {
     public function _before(ApiTester $I)
     {
-      /*
-      $this->haveHttpHeader('Content-Type', 'application/json');
-      $this->haveHttpHeader('ACCEPT', 'application/json');
-      $this->haveHttpHeader('X_REQUESTED_WITH', 'xmlhttprequest');
-      */
+        $I->_before();
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
+    public function isOnline(ApiTester $I)
     {
-      $I->sendGET('/enviroment');
-      $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
-      $I->seeResponseIsJson();
+        $I->sendGET('/enviroment');
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson([
+            'config_php' => true,
+            'config_ambiente' => true,
+            'config_db' => true,
+            'conected_db' => true,
+        ]);
     }
 }

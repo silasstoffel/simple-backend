@@ -21,6 +21,11 @@ class AmbienteController
         if ($request_info->getPort() && $request_info->getPort() !== 80) {
             $base_url .= ':' . $request_info->getPort();
         }
+        $conected_db = null;
+        try {
+          $conected_db = R::count('user');
+        } catch(\Exception $e) {}
+
         $data = [
             'env' => $a,
             'base_url' => $base_url,
@@ -29,6 +34,7 @@ class AmbienteController
             'config_ambiente' => file_exists('config/config_ambiente.php'),
             'config_db' => file_exists('config/config_db.php'),
             'always_populate_raw_post_data' => ini_get('always_populate_raw_post_data'),
+            'conected_db' => is_numeric($conected_db),
             'dirs' => [
                 'root' => $_config['root_dir'],
                 'tmp' => TMP_DIR,

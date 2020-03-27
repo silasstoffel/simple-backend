@@ -17,7 +17,7 @@ function appErrorHandler($severity, $message, $file, $line)
     }
 }
 
-function appExceptionHandler(Error $exc)
+function appExceptionHandler($exc)
 {
     if (error_reporting()) {
         ob_get_clean();

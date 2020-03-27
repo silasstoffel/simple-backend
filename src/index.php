@@ -1,7 +1,6 @@
 <?php
 // https://github.com/tuupola/slim-jwt-auth/tree/2.x
 // https://github.com/tuupola/slim-api-skeleton
-
 error_reporting(E_ALL);
 $_config = [];
 $_user = null;

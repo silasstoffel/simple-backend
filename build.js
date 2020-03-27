@@ -42,8 +42,7 @@ if (build_mode === '--dev') {
     });
 } else if (build_mode === '--prod') {
   let date = new Date();
-  let date_format = `${date.getDate()}-${date.getMonth() +
-    1}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  let date_format = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   console.log(`> Starting ${date_format}`);
   const ignored_files = [
     path.resolve(path_build_prod, 'composer.json'),

@@ -22,21 +22,21 @@ class SessionController
         $pwd = isset($params['password']) && strlen($params['password']) ? $params['password'] : null;
 
         if (is_null($email) or is_null($pwd)) {
-            return $response->withJson(['error' => true, 'message' => 'E-mail e senha são obrigatórios'], 400);
+            return $response->withJson(['error' => true, 'message' => 'E-mail e senha são obrigatórios'], 401);
         }
 
         try {
             $user = R::findOne('user', 'email = ?', [$email]);
             if (!isset($user->id)) {
-                return $response->withJson(['error' => true, 'message' => 'Usuário não encontrado'], 400);
+                return $response->withJson(['error' => true, 'message' => 'Usuário não encontrado'], 401);
             }
         } catch (\Exception $e) {
-            return $response->withJson(['error' => true, 'message' => 'Erro ao encontrar usuário. Detalhe: ' . $e->getMessage()], 400);
+            return $response->withJson(['error' => true, 'message' => 'Erro ao encontrar usuário. Detalhe: ' . $e->getMessage()], 401);
         }
 
         // Senha é válida
         if (!Hash::verify($pwd, $user->password_hash)) {
-            return $response->withJson(['error' => true, 'message' => 'Senha inválida'], 400);
+            return $response->withJson(['error' => true, 'message' => 'Senha inválida'], 401);
         }
         $user = $user->export();
         unset($user['password_hash'], $user['created_at'], $user['updated_at']);

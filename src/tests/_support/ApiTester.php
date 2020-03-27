@@ -29,6 +29,8 @@ class ApiTester extends \Codeception\Actor
 
     public function authenticate()
     {
-
+      $login = [
+        'email' => 'silasstofel@gmail.com'
+      ];
     }
 }
