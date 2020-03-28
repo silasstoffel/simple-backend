@@ -1,6 +1,21 @@
 <?php
 // https://codeception.com/docs/10-APITesting
 
+/**
+ * Escopo do teste
+ * 1 - Criar usuário
+ * 2 - Tentar criar um com e-mail ja existente
+ * 3 - Impedir login com email que não existe
+ * 4 - Impedir login com senha errada
+ * 5 - Login correto
+ * 6 - Impedir login com senha errada
+ * 7 - Ler os dados do usuário em acesso (Aqui precisa estar logado e passar token(JWT))
+ * 8 - Alteração
+ * 8.1 - Alteração dos dados (nome, senha)
+ * 8.2 - Loga com novos dados alterados
+ * 9 Deletar a conta
+ */
+
 class AccountCest
 {
   private $initial_account = [
