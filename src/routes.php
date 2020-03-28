@@ -21,10 +21,10 @@ $_app->post('/signup', \UserController::class . ':signUp');
 // Rotas autenticas por JWT
 $_app->group('/v1', function (\Slim\App $app) use ($_config) {
 
-    $app->get('/dashboard', \HomeController::class . ':index');
+  $app->get('/dashboard', \HomeController::class . ':index');
 
-    // Users
-    $app->get('/users/{id}', \UserController::class . ':load');
-    $app->put('/users/update-me', \UserController::class . ':updateMe');
-
+  // Users
+  $app->get('/users/{id}', \UserController::class . ':load');
+  $app->put('/users/update/me', \UserController::class . ':updateMe');
+  $app->delete('/users/delete/me', \UserController::class . ':deleteMe');
 });

@@ -97,4 +97,25 @@ class UserController
         return $response->withJson($user->export());
     }
 
+    public function deleteMe($request, $response, $args)
+    {
+        $id = $this->container['user']['id'];
+        if (!$id) {
+            return $response->withJson(['error' => true, 'message' => 'Não foi possível identificar o usuário pelo token'], 400);
+        }
+
+        $user = R::load('user', $id);
+        if (!isset($user->id)) {
+            return $response->withJson(['error' => true, 'message' => 'Usuário não encontrado'], 400);
+        }
+        try {
+            R::trash($user);
+        } catch (\Exception $ex) {
+            return $response->withJson([
+                'error' => true,
+                'message' => 'Error ao excluir usuário. Detalhes técnicos: ' . $ex->getMessage(),
+            ], 400);
+        }
+        return $response->withJson($user->export());
+    }
 }
