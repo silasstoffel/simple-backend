@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -15,10 +14,12 @@
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
-*/
+ */
 class ApiTester extends \Codeception\Actor
 {
     use _generated\ApiTesterActions;
+
+    public $session = [];
 
     public function _before()
     {
@@ -27,10 +28,40 @@ class ApiTester extends \Codeception\Actor
         $this->haveHttpHeader('X_REQUESTED_WITH', 'xmlhttprequest');
     }
 
-    public function authenticate()
+    public function login()
     {
-      $login = [
-        'email' => 'silasstofel@gmail.com'
-      ];
+        $login = [
+            'email' => 'mestre@tagtec.com.br',
+            'password' => '123456',
+        ];
+        $this->sendPOST('/session', $login);
+        $this->seeResponseCodeIs(200);
+        $this->seeResponseIsJson();
+        //
+        $this->seeResponseContainsJson([
+            'user' => [
+                'email' => 'mestre@tagtec.com.br',
+                'name' => 'Mestre TagTec',
+            ],
+        ]);
+
+        $this->seeResponseMatchesJsonType([
+            'user' => [
+                'id' => 'integer:>0',
+                'name' => 'string',
+                'email' => 'string:email',
+                'mobile_phone' => 'string|null',
+            ],
+            'token' => 'string',
+        ]);
+
+        $session = json_decode($this->grabResponse(), true);
+        $this->session = $session;
+        $this->amBearerAuthenticated($session['token']);
+    }
+
+    public function getCurrentSession()
+    {
+        return $this->session;
     }
 }
