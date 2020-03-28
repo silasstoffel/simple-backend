@@ -63,7 +63,7 @@ Http status: >=400:
 ```
 ##
 
-- **Criar usuário**
+**Criar usuário**
 
 **POST: /signup**
 
@@ -97,9 +97,11 @@ http status: 200:
 
 ##
 
-- **Recuperar usuário**
+**Recuperar usuário**
 
-**GET: /users/:id**
+**GET: /v1/users/:id**
+
+**Response**
 
 http status: 200:
 
@@ -115,9 +117,13 @@ http status: 200:
 }
 ```
 
-- **Alterar perfil do usuário logado**
+##
 
-Parametros:
+**Alterar perfil do usuário logado**
+
+**PUT: /users/update/me'**
+
+**Request**
 
 ```json
 {
@@ -126,7 +132,9 @@ Parametros:
 }
 ```
 
-Retorno de Sucesso (200)
+**Response**
+
+http status: 200:
 
 ```json
 {
@@ -140,11 +148,13 @@ Retorno de Sucesso (200)
 }
 ```
 
-- **Login (Criar token de acesso)**
+##
+
+**Login (Criar token de acesso)**
 
 `POST /session`
 
-Parametros:
+**Request**
 
 ```json
 {
@@ -153,7 +163,9 @@ Parametros:
 }
 ```
 
-Retorno de Sucesso (200)
+**Response**
+
+http status: 200:
 
 ```json
 {
@@ -168,13 +180,3 @@ Retorno de Sucesso (200)
 }
 ```
 
-### API - Erros
-
-Em caso de acontecer algum erro nas requisições, o http status retornado será 400 a 499, quando esse status for reportado o retorno virá neste layout.
-
-```json
-{
-  "error": true,
-  "message": "Usuário existente"
-}
-```
