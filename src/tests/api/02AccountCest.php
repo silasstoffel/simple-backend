@@ -8,12 +8,11 @@
  * 3 - Impedir login com email que não existe
  * 4 - Impedir login com senha errada
  * 5 - Login correto
- * 6 - Impedir login com senha errada
- * 7 - Ler os dados do usuário em acesso (Aqui precisa estar logado e passar token(JWT))
- * 8 - Alteração
- * 8.1 - Alteração dos dados (nome, senha)
- * 8.2 - Loga com novos dados alterados
- * 9 Deletar a conta
+ * 6 - Ler os dados do usuário em acesso (Aqui precisa estar logado e passar token(JWT))
+ * 7 - Alteração
+ * 7.1 - Alteração dos dados (nome, senha)
+ * 7.2 - Loga com novos dados alterados
+ * 8 Deletar a conta
  */
 
 class AccountCest
@@ -53,7 +52,6 @@ class AccountCest
    */
   public function noCreateWithExistingEmail(ApiTester $I)
   {
-
     $I->sendPOST('/signup', $this->initial_account);
     $I->seeResponseCodeIs(400);
     $I->seeResponseIsJson();

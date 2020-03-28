@@ -1,18 +1,24 @@
-### Dependências
+# Backend (PHP) Simples
+
+# Dependências
 
 - Node JS;
 - Yarn;
 - Composer;
+- Apache
+- PHP 5.6+ (recomendado 7.3). (Tem dockerfile caso queira usar PHP + Apache)
+- Servidor Web (se for usar apache lembre-se de habiliar módulo headers (CORS)) 
+
 
 Após instalação das dependências, rodar os comandos:
 
-`yarn`
+```shell
+yarn
+cd /src
+composer install
+```
 
-`cd /src`
-
-`composer install`
-
-### Configurações
+## Configurações
 
 Duplicar os arquivos (\*.exemple) abaixo e renomear para extensão `.php`
 
@@ -24,7 +30,7 @@ Duplicar os arquivos (\*.exemple) abaixo e renomear para extensão `.php`
 
 Criar o banco de dados com script **database.sql**
 
-### Builds
+## Builds
 
 Rodar o comando quando for em modo de desenvolvimento
 `npm run dev`
@@ -42,13 +48,27 @@ Após rodar o comando os fontes compilados ficarão no diretório **bin**
 
 Se estiver usando windows, você pode facilitar o processo de build acessando diretamente os utilitários **build.dev.bat** e **build.prod.bat**
 
-### API
+## API
+
+**Importante**
+
+Em todas as requisições em que houver erro http >= 400, um objeto como este será retornado:
+
+Http status: >=400:
+```json
+{
+  "error": true,
+  "message": "string"
+}
+```
+##
 
 - **Criar usuário**
 
-`POST: /signup`
+**POST: /signup**
 
-Parametros
+
+**Request**
 
 ```json
 {
@@ -59,7 +79,9 @@ Parametros
 }
 ```
 
-Retorno de Sucesso (200)
+**Response**
+
+http status: 200:
 
 ```json
 {
@@ -73,11 +95,13 @@ Retorno de Sucesso (200)
 }
 ```
 
+##
+
 - **Recuperar usuário**
 
-`GET: /v1/users/:id`
+**GET: /users/:id**
 
-Retorno de Sucesso (200)
+http status: 200:
 
 ```json
 {
