@@ -67,6 +67,7 @@ Http status: >=400:
 
 **POST: /signup**
 
+#
 
 **Request**
 
@@ -95,9 +96,51 @@ http status: 200:
 }
 ```
 
+**Login (Criar token de acesso)**
+
+`POST /session`
+
+**Request**
+
+```json
+{
+  "email": "email@gmail.com",
+  "password": "sua senha"
+}
+```
+
+**Response**
+
+http status: 200:
+
+```json
+{
+  "user": {
+    "id": 1,
+    "name": "XXXX",
+    "email": "email@gmail.com",
+    "mobile_phone": "27999999999",
+    "active": 1
+  },
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzQ2MjEwNTUsImV4cCI6MTU3NDY0OTg1NSwiaWQiOjF9.MXI2EUtksjETiBPTegB-C4_jFCcGpgttxxwv5Dwzjhs"
+}
+```
+
+Depois da autenticação com sucesso, em todas às requisições devem ser enviado no header da requisição o token retornado do autenticação.
+
+```shell
+Authorization: Bearer <token>
+ ```
+Para maiores informações consulte [HTTP authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
+
+##
+
+Todas às requisições abaixo requer o token (jwt) enviado 
+
 ##
 
 **Recuperar usuário**
+
 
 **GET: /v1/users/:id**
 
@@ -150,33 +193,38 @@ http status: 200:
 
 ##
 
-**Login (Criar token de acesso)**
+**Excluir perfil do usuário logado**
 
-`POST /session`
+**DELETE: /users/delete/me'**
 
-**Request**
-
-```json
-{
-  "email": "email@gmail.com",
-  "password": "sua senha"
-}
-```
 
 **Response**
 
-http status: 200:
+http status: 200: usuário excluido
 
 ```json
 {
-  "user": {
-    "id": 1,
-    "name": "XXXX",
-    "email": "email@gmail.com",
-    "mobile_phone": "27999999999",
-    "active": 1
-  },
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzQ2MjEwNTUsImV4cCI6MTU3NDY0OTg1NSwiaWQiOjF9.MXI2EUtksjETiBPTegB-C4_jFCcGpgttxxwv5Dwzjhs"
+  "id": 1,
+  "name": "XXX",
+  "email": "XXX",
+  "mobile_phone": "XXX",
+  "created_at": "2019-11-24 12:47:00",
+  "updated_at": "2019-11-24 17:15:47",
+  "active": 1
 }
 ```
 
+
+## TESTS
+
+Cobertura de testes de *API*
+
+```
+cd /src
+
+php vendor/bin/codecept run api
+
+php vendor/bin/codecept run api --steps
+```
+
+https://codeception.com/docs/10-APITesting
