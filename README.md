@@ -7,8 +7,7 @@
 - Composer;
 - Apache
 - PHP 5.6+ (recomendado 7.3). (Tem dockerfile caso queira usar PHP + Apache)
-- Servidor Web (se for usar apache lembre-se de habiliar módulo headers (CORS)) 
-
+- Servidor Web (se for usar apache lembre-se de habiliar módulo headers (CORS))
 
 Após instalação das dependências, rodar os comandos:
 
@@ -55,12 +54,14 @@ Se estiver usando windows, você pode facilitar o processo de build acessando di
 Em todas as requisições em que houver erro http >= 400, um objeto como este será retornado:
 
 Http status: >=400:
+
 ```json
 {
   "error": true,
   "message": "string"
 }
 ```
+
 ##
 
 **Criar usuário**
@@ -130,17 +131,17 @@ Depois da autenticação com sucesso, em todas às requisições devem ser envia
 
 ```shell
 Authorization: Bearer <token>
- ```
+```
+
 Para maiores informações consulte [HTTP authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
 
 ##
 
-Todas às requisições abaixo requer o token (jwt) enviado 
+Todas às requisições abaixo requer o token (jwt) enviado
 
 ##
 
 **Recuperar usuário**
-
 
 **GET: /v1/users/:id**
 
@@ -197,7 +198,6 @@ http status: 200:
 
 **DELETE: /users/delete/me'**
 
-
 **Response**
 
 http status: 200: usuário excluido
@@ -214,10 +214,21 @@ http status: 200: usuário excluido
 }
 ```
 
+## Docker
+
+Para montar ambiente com docker use às variáveis definidas no arquivo **docker-compose.env.example** e parametrize essas variáveis no seu arquivo **.env** (se não tiver .env na raíz, então é necessário criar). Feito a parametrização, rode o comando para montar os containers.
+
+```bash
+# Para iniciar
+docker-compose up -d
+
+# Para finalizar
+docker-compose stop
+```
 
 ## TESTS
 
-Cobertura de testes de *API*
+Cobertura de testes de _API_
 
 ```
 cd /src
