@@ -59,3 +59,4 @@ config_db.php
 config_php.php
 /src/.env
 /src/tests/_output
+/.env
